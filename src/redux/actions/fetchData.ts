@@ -5,6 +5,7 @@ import {
   fetchArticlesPending,
   fetchArticlesSuccess,
   fetchHeadlinesError,
+  fetchHeadlinesPending,
   fetchHeadlinesSuccess
 } from "./actionCreators";
 
@@ -33,7 +34,7 @@ export function fetchArticles(searchString: string) {
 // fetch headlines
 export function fetchHeadlines() {
   return function action(dispatch: Dispatch) {
-    dispatch(fetchArticlesPending());
+    dispatch(fetchHeadlinesPending());
     const request = axios({
       method: "GET",
       url: `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`
