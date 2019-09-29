@@ -8,10 +8,12 @@ export interface IAppProps
 
 export interface IConnectedAppProps {
   articles: ILoadable<IArticle[]>;
+  headlines: ILoadable<IArticle[]>;
 }
 
 export interface IAppsActions {
   fetch: (searchString: string) => void;
+  fetchHeadlinesView: () => void;
 }
 
 export interface IAppsOwnProps {}

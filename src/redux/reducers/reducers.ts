@@ -36,8 +36,41 @@ function fetchDataReducer(
   }
 }
 
+function fetchHeadlinesReducer(
+  state: ILoadable<IArticle[]> = {
+    pending: false,
+    error: undefined,
+    value: []
+  },
+  action: IAction<any>
+): ILoadable<IArticle[]> {
+  switch (action.type) {
+    case actionDef.FETCH_HEADLINES_PENDING:
+      return {
+        ...state,
+        pending: true,
+        error: undefined
+      };
+    case actionDef.FETCH_HEADLINES_SUCCESS:
+      return {
+        pending: false,
+        error: undefined,
+        value: action.payload
+      };
+    case actionDef.FETCH_HEADLINES_ERROR:
+      return {
+        ...state,
+        pending: false,
+        error: action.payload
+      };
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
-  articles: fetchDataReducer
+  articles: fetchDataReducer,
+  headlines: fetchHeadlinesReducer
 });
 
 export default rootReducer;

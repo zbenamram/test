@@ -3,7 +3,9 @@ import { Dispatch } from "redux";
 import {
   fetchArticlesError,
   fetchArticlesPending,
-  fetchArticlesSuccess
+  fetchArticlesSuccess,
+  fetchHeadlinesError,
+  fetchHeadlinesSuccess
 } from "./actionCreators";
 
 // api key obtained from https://newsapi.org - please replace with your own key
@@ -29,3 +31,21 @@ export function fetchArticles(searchString: string) {
 }
 
 // fetch headlines
+export function fetchHeadlines() {
+  return function action(dispatch: Dispatch) {
+    dispatch(fetchArticlesPending());
+    const request = axios({
+      method: "GET",
+      url: `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`
+    });
+
+    return request.then(
+      response => {
+        if (response && response.data && response.data.articles) {
+          dispatch(fetchHeadlinesSuccess(response.data.articles));
+        }
+      },
+      err => dispatch(fetchHeadlinesError(err))
+    );
+  };
+}

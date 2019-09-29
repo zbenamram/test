@@ -18,5 +18,17 @@ export function fetchArticlesSuccess(payload: any): IAction<any> {
 }
 
 export function fetchArticlesError(error: any) {
-  return { type: actionDef.FETCH_ARTICLES_SUCCESS, payload: error };
+  return { type: actionDef.FETCH_ARTICLES_ERROR, payload: error };
+}
+
+export function fetchHeadlinesPending() {
+  return { type: actionDef.FETCH_HEADLINES_PENDING };
+}
+
+export function fetchHeadlinesSuccess(payload: any): IAction<any> {
+  return { type: actionDef.FETCH_HEADLINES_SUCCESS, payload: payload };
+}
+
+export function fetchHeadlinesError(error: any) {
+  return { type: actionDef.FETCH_HEADLINES_SUCCESS, payload: error };
 }

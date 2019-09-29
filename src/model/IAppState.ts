@@ -3,4 +3,5 @@ import { ILoadable } from "./ILoadable";
 
 export interface IAppState {
   articles: ILoadable<IArticle[]>;
+  headlines: ILoadable<IArticle[]>;
 }

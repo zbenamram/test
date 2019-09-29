@@ -1,7 +1,8 @@
 import { IAppState } from "../model/IAppState";
 
 const initialState: IAppState = {
-  articles: { pending: false, error: undefined, value: [] }
+  articles: { pending: false, error: undefined, value: [] },
+  headlines: { pending: false, error: undefined, value: [] }
 };
 
 export default initialState;
